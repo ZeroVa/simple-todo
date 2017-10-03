@@ -2,15 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { fetchToDos, addToDo, removeToDo, updateToDo, toggleToDoCompleted } from './actions/toDo';
 
-var ToDoItem = (props) => <li>{props.item.text}</li>;
+var ToDoItem = (props) => <li className={props.className}>
+    <div className="todo-item-inner">
+        <div className="item-text">{props.item.text}</div>
+        <div className="btn-edit">edit</div>
+    </div>
+</li>;
 
 class ToDoList extends Component {
     render() {
         return (
-            <div>
-                <ul>
+            <div className="todo-list-outer">
+                <ul className="todo-list">
                     {this.props.toDos && this.props.toDos.map(toDoItem => (
-                        <ToDoItem key={toDoItem._id} item={toDoItem} />
+                        <ToDoItem className="todo-item" key={toDoItem._id} item={toDoItem} />
                     ))}
                 </ul>
             </div>
