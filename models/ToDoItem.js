@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 
 var ToDoSchema = new mongoose.Schema({
-  itemName: {
+  text: {
       type: String,
       required: true
   },
   completed: {
-      type: boolean,
+      type: Boolean,
       required: true,
   },
   created: {

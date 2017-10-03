@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { fetchToDos, addToDo, removeToDo, updateToDo, toggleToDoCompleted } from './actions/toDo';
 
-var task = (props) => <li>{props.taskName}</li>;
+var ToDoItem = (props) => <li>{props.item.text}</li>;
 
 class ToDoList extends Component {
     render() {
         return (
             <div>
                 <ul>
-                    {this.props.toDos.map(toDoItem => (
+                    {this.props.toDos && this.props.toDos.map(toDoItem => (
                         <ToDoItem key={toDoItem._id} item={toDoItem} />
                     ))}
                 </ul>
@@ -17,4 +18,10 @@ class ToDoList extends Component {
     }
 }
 
-export default connect((state) => { toDos: state.toDos }, { getToDoList, addToDoItem })(ToDoList);
+function mapStateToProps(state) {
+    return {
+        toDos: state.toDos
+    };
+}
+
+export default connect(mapStateToProps, { fetchToDos, addToDo, removeToDo, updateToDo, toggleToDoCompleted })(ToDoList);

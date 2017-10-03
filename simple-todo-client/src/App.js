@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import logo from './logo.svg';
+import ToDoList from './ToDoList';
 import './App.css';
 
 class App extends Component {
 
-  constructor() {
-
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -14,7 +15,6 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           {/* <Route path='/' component={component}/> */}
-          <Route path='/' component={component}/>
           <Route path='/todos' component={ToDoList}/>
           
         </BrowserRouter>
